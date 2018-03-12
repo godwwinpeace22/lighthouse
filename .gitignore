@@ -64,4 +64,5 @@ typings/
 config
 config.js
 img
+procfile
 useful.txt
