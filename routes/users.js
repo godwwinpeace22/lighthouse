@@ -14,7 +14,15 @@ let restrictAccess = function(req,res, next){
 	else{
 	  res.redirect('/auth/login');
 	}
-  }
+}
+let requireLogOut = function(req,res,next){
+	if(req.user){
+		res.redirect('/dashboard'); // Redirect to the dashbaord if the user is aleady logged in
+	}
+	else{
+		next()  // Run the next middleware if the user is logged in
+	}
+}
 
 //allow access to Master only.
 let masterLogin = function(req,res,next){
@@ -149,12 +157,13 @@ passport.use(new LocalStrategy(
 	}
 ));
   
-router.get('/login',function(req, res, next){
+router.get('/login', requireLogOut, function(req, res, next){
 	res.render('login', {
-		title: 'Login'
-	})
+		title: 'Login',
+		isLoggedIn:req.user? req.user : ''
+	});
 });
-  router.post('/login',
+  router.post('/login', requireLogOut,
 	passport.authenticate('local', {failureRedirect:'/auth/login', failureFlash:'authentication failed'}),
 	function(req, res) {
 	  console.log('authentication successful!')

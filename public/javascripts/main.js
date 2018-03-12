@@ -47,49 +47,4 @@ $(document).ready(function() {
           });
       });
       */
-      
-
-
-      // Gallery Lightbox
-      $('.column img').click(function(){
-        $('#myModal').css({display:"block"})
-      })
-      $('.model .close').click(function(){
-        $('#myModal').css({display:"none"})
-      });
-      
-      var slideIndex = 1;
-      showSlides(slideIndex);
-      
-      $('.prev').click(function(){
-        showSlides(slideIndex += -1);
-        //alert('Prev');
-      })
-      $('.next').click(function(){
-        showSlides(slideIndex += 1);
-        //alert('Next');
-      })
-      
-      
-      function currentSlide(n) {
-        showSlides(slideIndex = n);
-      }
-      
-      function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("demo");
-        var captionText = document.getElementById("caption");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
-        captionText.innerHTML = dots[slideIndex-1].alt;
-      }
  });

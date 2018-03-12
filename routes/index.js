@@ -72,6 +72,7 @@ router.post('/sermons/:sermonLink', (req,res,next)=>{
 // Get gallery
 router.get('/gallery', (req,res,next)=>{
   Image.find({}).sort({index:-1}).exec(function(err,images){
+    //console.log(images);
     res.render('gallery', {title:'Photo Gallery',images:images});
   });
 })

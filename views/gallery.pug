@@ -1,62 +1,13 @@
 extends layout
 block content
-	link(href="/stylesheets/simplelightbox.min.css" rel="stylesheet")
+	link(href='https://unpkg.com/nanogallery2@2.0.0/dist/css/nanogallery2.min.css', rel='stylesheet', type='text/css')
 	link(rel="stylesheet", href="/stylesheets/about.css")
-	script(src="/javascripts/jquery-3.2.0.js")
-	script(src='/javascripts/main.js')
+	script(type='text/javascript', src='https://unpkg.com/nanogallery2@2.0.0/dist/jquery.nanogallery2.min.js')
 	.header-nav-bgrd
-	div.gallery
-		.row
-			.column
-				img.hover-shadow.cursor(src='/images/pastor-image.jpg', style='width:100%', )
-			.column
-				img.hover-shadow.cursor(src='/images/rccg.png', style='width:100%', )
-			.column
-				img.hover-shadow.cursor(src='/images/rccg.png', style='width:100%')
-			.column
-				img.hover-shadow.cursor(src='/images/rccg.png', style='width:100%')
-
-
-		#myModal.modal
-			span.close.cursor &times;
-			.modal-content
-
-				.mySlides
-					.numbertext 1 / 4
-					img(src="/images/pastor-image.jpg" style="width:100%")
-
-				
-				.mySlides
-					.numbertext 2 / 4
-					img(src='/images/rccg.png', style='width:100%')
-
-					
-				.mySlides
-					.numbertext 3 / 4
-					img(src='/images/rccg.png', style='width:100%')
-				.mySlides
-					.numbertext 4 / 4
-					img(src='/images/rccg.png', style='width:100%')
-				
-				a.prev &#x276E;
-				a.next &#x276F;
-
-				
-				.caption-container
-					p#caption
-
-
-				var index = 0
-				.column
-					img.demo.cursor(src='/images/pastor-image.jpg', style='width:100%', onclick='currentSlide(1)', alt='Nature and sunrise')
-				.column
-					img.demo.cursor(src='/images/rccg.png', style='width:100%', onclick='currentSlide(2)', alt='Trolltunga, Norway')
-				.column
-					img.demo.cursor(src='/images/rccg.png', style='width:100%', onclick='currentSlide(3)', alt='Mountains and fjords')
-				.column
-					img.demo.cursor(src='/images/rccg.png', style='width:100%', onclick='currentSlide(4)', alt='Northern Lights')
-  
-	script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
-	script(src='/javascripts/main.js')
+	.gallery
+		div.gallery(data-nanogallery2='{    "thumbnailWidth": "200",    "colorScheme": {    "thumbnail": {    "background": "rgba(81,140,163,1)"    }    },    "thumbnailDisplayTransition": "scaleUp",    "thumbnailHoverEffect2": "imageScaleIn80|imageSepiaOff|labelAppear75" ,"galleryDisplayMode": "moreButton","galleryLastRowFull": true   }')
+			if(images)
+				each image in images
+					a(href=image.imgSrc, data-ngthumb=image.imgSrc, data-ngdesc=image.desc)
 		
 
