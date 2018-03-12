@@ -1,0 +1,58 @@
+extends layout
+block content
+	link(rel="stylesheet", href="/stylesheets/sermons.css")
+	.header-nav-bgrd
+	.read.col-sm-8.col-sm-offset-2
+		.card.col-sm-12
+			.panel.panel-default
+				.panel-heading(style='background-image:url(' + sermon.imgSrc +')')
+				.panel-body
+					if(sermon)
+						h3 #{sermon.title}
+						li By: #{sermon.by}
+						li Date: #{sermon.date}
+						li Text: #{sermon.bibleTxt}
+						li Service: #{sermon.service}
+					hr
+					.text
+						if(sermon)
+						p!=sermon.txt
+			
+		.replies.col-sm-12
+			h3 Comments
+			hr
+			.views
+				if(comments)
+					each comment in comments
+						.views-inner
+							p
+								span(style='text-transform:capitalize;'): b #{comment.name}
+								span: b   |  #{comment.date}
+							p Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ducimus ad dolores voluptatibus. Odit, repudiandae voluptate cupiditate alias ipsa ducimus asperiores dolores earum voluptas praesentium omnis iure odio deserunt doloremque.
+			hr
+		.comment.col-sm-12
+			h3 Leave A Reply
+			form.form(action="" method='POST')
+				.form-group
+					textarea.form-control(name="comment", cols="30", rows="8")
+				.form-group
+					.input-left.pull-left
+						label Name*
+						input(type="text" name='name' required)
+					.input-right.pull-right
+						label Email*
+						input(type="text" name='email' required)
+				.form-group
+					button.btn.btn-primary(type="submit") Submit
+	.newsletter.col-sm-12
+		h2.text-center Sign Up For Email Updates
+		p.text-center Sign up with your email address to receive news and updates
+		form(action="" method="POST")
+			.inputs.center-block.clearfix
+				input.pull-left(type="text" placeholder="Enter Your Email Address")
+				input.pull-right.btn.btn-default(type="submit" value='Sign Up')
+		p.text-center We respect your privacy
+		.social
+			p.text-center
+				span(style='margin-right:5px;'): a(href=''): i.fab.fa-facebook-f   
+				span: a(href=''): i.fa.fa-envelope

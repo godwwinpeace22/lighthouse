@@ -1,0 +1,27 @@
+extends layout
+block content
+	.header-nav-bgrd
+	.home-banner#home-banner
+		.dark-bgd.caption
+			.caption 
+				.caption-blur
+				h1 the city of his presence
+				p
+					a(href='/about') First Time Here?
+	.sermon-update.col-sm-12(style='background-color:#f9f7f7;')
+		.col-sm-8.col-sm-offset-2
+			h2.text-center: b Recent Sermons
+			.col-sm-3.sermon-update-img
+				if(sermons)
+					a(href='/sermons/' + sermons[1].link): img(src=sermons[1].imgSrc, alt="Sermon_img")
+			.col-sm-9.sermon-update-detail
+				if(sermons)
+					each sermon in sermons
+						.nth-sermon
+							h3: a(href='/sermons/' + sermon.link) #{sermon.title}
+							p #{sermon.date}
+		
+			
+			
+		
+
