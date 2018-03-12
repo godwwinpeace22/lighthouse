@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const config = require('../config.js').get(process.env.NODE_ENV);
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const flash = require('connect-flash');
@@ -19,11 +18,11 @@ let restrictAccess = function(req,res, next){
 
 //allow access to Master only.
 let masterLogin = function(req,res,next){
-	bcrypt.compare(process.env.masterPassword || config.masterLogin.psw, req.user.password,  function(err, response) {
+	bcrypt.compare(process.env.masterPassword,  function(err, response) {
 		if(err) throw err;
 		console.log(response);
 		// res === true || res === false
-		if(req.user.username == process.env.masterUsername || config.masterLogin.username && response == true){
+		if(req.user.username == process.env.masterUsername && response == true){
 			next();
 		}
 		else{

@@ -5,11 +5,10 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-const config = require('./config.js').get(process.env.NODE_ENV);
 const passport = require('passport');
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
-const mongoDB = process.env.database || config.database;
+const mongoDB = process.env.database;
 mongoose.connect(mongoDB);
 db = mongoose.connection;
 //bind connecton to error event(to get notification of connection errors)

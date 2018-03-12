@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const config = require('../config.js').get(process.env.NODE_ENV);
 const moment = require('moment');
 const Sermon = require('../models/sermon');
 const Comment = require('../models/comment');
@@ -86,15 +85,15 @@ router.get('/contact', (req,res,next)=>{
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-	user: process.env.email || config.gmail.email,
-	pass: process.env.password || config.gmail.password
+	user: process.env.email,
+	pass: process.env.password,
   }
 });
 router.post('/contact', (req,res,next)=>{
   // setup email data
   var mailOptions = { 
     from: req.body.email,
-    to: process.env.email || config.gmail.email,
+    to: process.env.email,
     subject: 'I Am New Here',
     text: `Hi, I am ${req.body.name}. 
       'req.body.mailBody`

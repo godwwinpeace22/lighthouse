@@ -5,7 +5,6 @@ const Image = require('../models/image');
 const moment = require('moment');
 const multer  = require('multer');
 const cloudinary = require('cloudinary');
-const config = require('../config.js').get(process.env.NODE_ENV);
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
 	  cb(null, 'public/uploads/');
@@ -43,9 +42,9 @@ router.post('/newsermon',restrictAccess, upload.single('imgSrc'), (req,res,next)
 
   //upload a file
   cloudinary.config({
-    cloud_name: process.env.cloud_name || config.cloudinary.cloud_name,
-    api_key:process.env.api_key || config.cloudinary.api_key,
-    api_secret:process.env.api_secret || config.cloudinary.api_secret
+    cloud_name: process.env.cloud_name,
+    api_key:process.env.api_key,
+    api_secret:process.env.api_secret,
   });
   cloudinary.uploader.upload(req.file.path, function(result) {
     var sermon = new Sermon({
@@ -84,9 +83,9 @@ router.get('/newmedia',restrictAccess, (req,res,next)=>{
 router.post('/newmedia', restrictAccess, upload.single('imgSrc'), (req,res,next)=>{
   //upload a file
   cloudinary.config({
-    cloud_name: process.env.cloud_name || config.cloudinary.cloud_name,
-    api_key:process.env.api_key || config.cloudinary.api_key,
-    api_secret:process.env.api_secret || config.cloudinary.api_secret
+    cloud_name: process.env.cloud_name,
+    api_key:process.env.api_key,
+    api_secret:process.env.api_secret,
   });
   cloudinary.uploader.upload(req.file.path, function(result) {
     var image = new Image({
