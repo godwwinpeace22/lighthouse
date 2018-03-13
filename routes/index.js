@@ -102,8 +102,8 @@ router.get('/contact', (req,res,next)=>{
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-	user: process.env.email,
-	pass: process.env.password,
+    user: process.env.email,
+    pass: process.env.password
   }
 });
 router.post('/contact', (req,res,next)=>{
@@ -112,8 +112,8 @@ router.post('/contact', (req,res,next)=>{
     from: req.body.email,
     to: process.env.email,
     subject: 'I Am New Here',
-    text: `Hi, I am ${req.body.name}. 
-      'req.body.mailBody`
+    text: `Hi, I am ${req.body.fname} ${req.body.lname}. 
+      ${req.body.msg}` 
   };
 
   // send mail with defined transport object
@@ -122,7 +122,10 @@ router.post('/contact', (req,res,next)=>{
       //console.log(error);
     } else {
       //console.log('Email sent: ' +  info.response +', ' + info.messageId);
-      res.render('success', {title:'Email recieved', msg:'Thank you for contacting us!. Your email has been recieved'});
+      res.render('success', {
+        title:'Email recieved',
+        msg:'Thank you for your interest!. We will get in touch soon'
+      });
     }
   });
 });

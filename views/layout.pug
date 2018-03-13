@@ -80,9 +80,9 @@ body
 		.newsletter.col-sm-12
 			h2.text-center Sign Up For Email Updates
 			p.text-center Sign up with your email address to receive news and updates
-			form(action="" method="POST")
+			form(action="/contact" method="POST")
 				.inputs.center-block.clearfix
-					input.pull-left(type="text" placeholder="Enter Your Email Address")
+					input.pull-left(type="text" placeholder="Enter Your Email Address" name='email')
 					input.pull-right.btn.btn-default(type="submit" value='Sign Up')
 			p.text-center We respect your privacy
 			.social
