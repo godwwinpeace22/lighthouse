@@ -6,7 +6,10 @@ block dashboard
 			.form-group
 				input.form-control(type="text" name='title' placeholder="Enter title of sermon" required)
 			.form-group
-				input.form-control(type="text" name='presentedBy' placeholder="Message Presenter")
+				select.form-control(name="presentedBy" required)
+					option Message Presenter
+					option Wale Olaniyan
+					option Peter Elem
 			.form-group
 				input.form-control(type="date" name='date' required)
 			.form-group
@@ -18,13 +21,17 @@ block dashboard
 			.form-group
 				input.form-control(type='text' name='series' placeholder="Sermon Series")
 			.form-group
-				select.form-control(name='category')
+				select.form-control(name='category' required)
 					option Choose category
-					option Event
-					option deliverance-and-healing
-					option righteousness-faith-and-grace
+					option faith
+					option deliverance
+					option healing
+					option righteousness
+					option faith
+					option grace
 					option service
-					option thanksgiving-and-praise
+					option thanksgiving
+					option praise
 					option others
 			.form-group
 				input.form-control(type='file' name='imgSrc' accept='image/*')

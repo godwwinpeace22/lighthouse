@@ -9,20 +9,25 @@ block content
                 .col-sm-12.filter
                     select#byPastor(name="byPastor")
                         option filter by pastor
-                        option John Doe
-                        option Jane Doe
+                        option Peter Elem
+                        option Wale Olaniyan
                     select#byCat(name="byCat")
                         option filter by category
-                        option Grace
-                        option Divine Favor
-                        option Righteousness
-                        option Obedience
-                        option Authority
+                        option faith
+                        option deliverance
+                        option healing
+                        option righteousness
+                        option faith
+                        option grace
+                        option service
+                        option thanksgiving
+                        option praise
+                        option others
                     select#bySeries(name='bySeries')
                         option filter by series
                 .sermon-blocks.col-sm-12
-                    if(!sermons)
-                        p.bg-warning No sermons yet for this category
+                    if(sermons.length== 0)
+                        p.bg-warning=msg
                     if(sermons)
                         each sermon in sermons
                             .card: .col-sm-4

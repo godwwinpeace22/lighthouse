@@ -14,7 +14,7 @@ head
 	meta(itemprop='image', content='')
 	title=title
 	// Place favicon.ico in the root directory
-	link(rel='shortcut icon', href='favicon.ico')
+	link(rel='shortcut icon', href='/favicon.ico')
 	// Bootstrap core CSS
 	link(rel='stylesheet', href='/stylesheets/bootstrap.css')
 	link(rel='stylesheet', href='/stylesheets/main.css')
@@ -127,13 +127,18 @@ body
 					
 					p 33 Udemezue Abakaliki, Ebonyi State, Nigeria
 					p +2348038017249
+			.col-sm-10.col-sm-offset-1
+				p.pull-left &#169; 2018 RCCG Lighthouse Parish. All rights Reserved
+			.col-sm-12.clearfix(style='font-size:12px;')
+				p.pull-right: a(href='https://www.facebook.com/godwin.gabriel.925') @Unplugged
+
 			
 	
 	script.
 		var elem = $(window).height();
 		var foo = $('.header-nav-bgrd').outerHeight();
 		//alert(foo)
-		-$('.home-banner').css({height:elem -foo})
+		-$('.slider').css({height:elem -foo})
 	//script(src='/javascripts/bootstrap.js')
 	script(defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js")
 	script(src='/javascripts/main.js')

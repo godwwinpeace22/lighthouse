@@ -26,22 +26,38 @@ router.get('/about', (req,res,next)=>{
 router.get('/events', (req,res,next)=>{
   res.render('events', {title:'Upcomming Events'});
 });
+
+// Get all sermons
 router.get('/sermons', (req,res,next)=>{
   Sermon.find({}).sort({index:-1}).exec(function(err,sermons){
     //console.log(sermons);
     res.render('sermons', {
       title:'Sermons',
-      sermons:sermons
+      sermons:sermons,
+      msg:'Sorry, no sermon for this category yet'
     });
-  })
+  });
 });
+
+// Get sermon in categories
+router.get('/sermons/filter/:filter', (req,res,next)=>{
+  Sermon.find({$or:[{category:req.params.filter}, {by:req.params.filter},{series:req.params.filter}]}).sort({index:-1}).exec(function(err, sermons){
+    if(err) throw err;
+    res.render('sermons', {
+      title:'Sermons',
+      sermons:sermons,
+      msg:'Sorry, no sermon for this category yet'
+    });
+  });
+});
+// Read sermon
 router.get('/sermons/:sermonLink', (req,res,next)=>{
   Sermon.findOne({link:req.params.sermonLink}).exec(function(err, sermon){
     if(err) throw err;
-    console.log(sermon);
+    //console.log(sermon);
     Comment.find({sermonRef:req.params.sermonLink}).exec(function(err, comments){
       if(err) throw err;
-      console.log(comments);
+      //console.log(comments);
       res.render('readsermon', {
         title:'Sermons',
         sermon:sermon,

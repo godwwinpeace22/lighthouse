@@ -1,15 +1,33 @@
 //$('.home-banner').css({height:$(window).height()})
 //console.log($(window).height())
 $(document).ready(function() {
+  
+
+  /* ================  Sermon Select Category ==========*/
+  
+  $('#byPastor').change(function(){
+
+    let pastor = $('#byPastor').val();
+    window.location.href = `/sermons/filter/${pastor}`
+  });
+
+  $('#byCat').change(function(){
+    let category = $('#byCat').val();
+    window.location.href = `/sermons/filter/${category}`
+  })
+
+  $('#bySeries').change(function(){
+    let series = $('#bySeries').val();
+    window.location.href = `/sermons/filter/${series}`
+  })
+
+
+
 
   /*<-----*Side Navigation controls ---->*/
   $('.openbtn').click(function(){
     document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    //document.getElementById("main").style.backgroundColor = "red";
-    //$('.darken').css({display:'block',height:$(document).height()});
-    //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-    
+    document.getElementById("main").style.marginLeft = "250px"; 
     $('.openbtn').css({opacity:'0'})
   });
 
@@ -20,11 +38,45 @@ $(document).ready(function() {
   $('.closebtn').click(function(){
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
-    //document.body.style.backgroundColor = "";
     $('.openbtn').css({opacity:'1'})
   });
     
 
+
+
+
+  //slider 
+    // Here we're going to move the active class between the slides. You can do this however you want, but for brevity I'm using JQuery.
+
+    // Get all the slides
+    var slides = $('.slide');
+
+    // Move the last slide before the first so the user is able to immediately go backwards
+    slides.first().before(slides.last());
+
+    function clicker() {
+    // Get all the slides again
+    slides = $('.slide');
+    // Register button
+    var button = $(this);
+    // Register active slide
+    var activeSlide = $('.active');
+    
+    // Next function
+        // Move first slide to the end so the user can keep going forward
+        slides.last().after(slides.first());
+        // Move active class to the right
+        activeSlide.removeClass('active').next('.slide').addClass('active');
+    
+    // Previous function
+    if (button.attr('id') == 'previous') {
+        // Move the last slide before the first so the user can keep going backwards
+        slides.first().before(slides.last());
+        // Move active class to the left
+        activeSlide.removeClass('active').prev('.slide').addClass('active');
+    }
+    };
+    setInterval(clicker,5000)
 
     var movementStrength = 25;
     var height = movementStrength / $(window).height();

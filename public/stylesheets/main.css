@@ -193,7 +193,7 @@ body{
     padding:2%;
 }
 .header-left .logos{
-    background-color:rgba(0,0,0,0.2);
+    
     width:180px;
 }
 .header-left .logos a:hover{
@@ -282,67 +282,121 @@ body{
     text-decoration: none;
 }
 
-.home-banner{
+.slider{
     background-color: grey;
     background-image: url(/img/wood-3167302_1280.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixe;
+    background-attachment: fixed;
     height:px;
     width:100%;
     margin:0px;
     padding:0px;
     height: /*js*/xpx;
     min-width:300px;
+    position: fixe;
+    overflow: hidden;
 }
-.home-banner .dark-bgd{
-    background-color:rgba(0,0,0,0.5);
+  
+  .slide {
+    height: 600px;
+    position: absolute;
+    transition: 1s ease-in-out;
+    transform: translate(-100%, 0);     /* Move slides off to the left  by default*/
+  }
+  .slider .active {       /* Set active slide to be in the viewport*/
+    transform: translate(0, 0);
+  }
+  .slider .active ~ .slide {    /*Use sibling selector to position all slides after the active slide to the right */
+    transform: translate(100%, 0);
+  }
+  
+  
+  
+  .slide {
+    text-align: left;
     width:100%;
-    padding:0px;
-    margin:0px;
-    height: inherit;
-}
-.home-banner .caption{
-    width:100%;
-    text-align: center;
-    color: #fff;
-    padding-top:10%;
-    margin:auto;
-}
-.home-banner .caption .caption-blu{
-    width:100%;
-    height:400px;
-    background-color:rgba(0,0,0,0.5);
-}
-.home-banner .caption h1{
-    text-align: center;
-    font-family: 'Acumin Pro Bold', sans-serif;
-    font-size:3.5em;
-    background-color: rgba(0,0,0,0);
-    font-weight: bold;
-    text-transform:capitalize;
+    color: white;
+    padding: px;
+    background-color: rgba(0,0,0,0.6);
+    left:-10px;
+  }
+  .slide .slide-inner{
+    background:tomat;
+    margin-top:100px;
+  }
+  .slide img{
+      width:100%;
+      height: inherit;
+      position: relative;
+  }
+  .slide .slide-inner h1{
+    text-transform:uppercase;
+    text-align:center;
+  }
+  .slide .slide-inner p{
     display:block;
-    width:90%;
-    margin-bottom: 5%;
-    margin-right:auto;
-    margin-left:auto;
-   
-}
-.home-banner .caption a{
+    margin-top:3%;
+    margin-bottom:px;
+    background:yello;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+  }
+  .slide .slide-inner .cta{
+      margin-top:3%;
+  }
+  .slide .slide-inner p a{
+    display:inline-block;
+    background:#2ac4ea;
     color:#fff;
-    padding:5px;
-    display:block;
-    border:2px solid #fff;
-    width:15%;
-    margin:auto;
-    font-size:15px;
-    font-weight:bold;
+    font-weight: 200;
+    padding:20px;
+  }
+  .slide .slide-inner p a:hover{
+      text-decoration: none;
+      
+  }
+  /*End Slider*/
+
+
+.welcome{
+    padding:3% 0%;
+    background-color:per;
 }
-.home-banner  .caption a:hover{
-    text-decoration: none;
-    color:tomato;
-    border:2px solid greenyellow;
+.welcome .who-we-are{
+    background-colo: #555555;
+}
+.welcome .who-we-are h3{
+    text-align:center;
+    overflow: hidden;
+}
+ 
+.welcome .who-we-are h3:before,
+.welcome .who-we-are h3:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.welcome .who-we-are h3:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.welcome .who-we-are h3:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+.welcome .latest-events{
+    overflow:hidden;
+    background-colo: #888888;
 }
 
 /* Newsletter */
@@ -535,11 +589,11 @@ footer ul p{
 }
 
 @media (max-width:840px){
-	.home-banner .caption h1{
+	.slider .caption h1{
         font-size:3.2em;
         margin-top:10%;
     }
-    .home-banner .caption a{
+    .slider .caption a{
         font-size: 15px;
     }
     .logos{
@@ -564,20 +618,20 @@ footer ul p{
 
 }
 @media (max-width:800px){
-    .home-banner .caption a{
+    .slider .caption a{
         width:20%;
     }
-    .home-banner .caption h1{
+    .slider .caption h1{
         font-size:3.2em;
         margin-top:20%;
     }
 }
 @media (max-width:590px){
-    .home-banner .caption a{
+    .slider .caption a{
         width:25%;
         font-size:12px;
     }
-    .home-banner .caption h1{
+    .slider .caption h1{
         margin-top:25%;
     }
 }
