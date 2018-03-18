@@ -365,9 +365,7 @@ body{
     padding:3% 0%;
     background-color:per;
 }
-.welcome .who-we-are{
-    background-colo: #555555;
-}
+
 .welcome .who-we-are h3{
     text-align:center;
     overflow: hidden;
@@ -396,7 +394,7 @@ body{
 
 .welcome .latest-events{
     overflow:hidden;
-    background-colo: #888888;
+    /*background-colo: #888888;*/
 }
 
 /* Newsletter */
